@@ -2,9 +2,9 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
-      <module name="HRManagement" target="26" />
-      <module name="HRManagement.main" target="26" />
-      <module name="HRManagement.test" target="26" />
+      <module name="HRManagement" target="21" />
+      <module name="HRManagement.main" target="21" />
+      <module name="HRManagement.test" target="21" />
     </bytecodeTargetLevel>
   </component>
 </project>
