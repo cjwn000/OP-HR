@@ -8,4 +8,12 @@
 </nav>
 
 ## 1. 개발 환경
-- 사용도구: intelliJ/ github, (DB:미상)
+JDK: Java 21
+Build System: Gradle
+Gradle DSL: Groovy
+UI: Java Swing (JFrame)
+Database: Aiven MySQL
+DB 관리: DBeaver
+협업: GitHub
+
+
