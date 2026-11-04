@@ -8,12 +8,12 @@
 </nav>
 
 ## 1. 개발 환경
-JDK: Java 21
-Build System: Gradle
-Gradle DSL: Groovy
-UI: Java Swing (JFrame)
-Database: Aiven MySQL
-DB 관리: DBeaver
-협업: GitHub
+- JDK: Java 21
+- Build System: Gradle
+- Gradle DSL: Groovy
+- UI: Java Swing (JFrame)
+- Database: Aiven MySQL
+- DB 관리: DBeaver
+- 협업: GitHub
 
 
