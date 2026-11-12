@@ -19,4 +19,4 @@
 
 ## 2. 프로젝트 계획 (예정)
 
-<a href = "https://github.com/cjwn000/OP-HR/edit/main/PROJECT_STRUCTURE.md">PROJECT_STRUCTURE.md 바로가기</a>
+<a href = "https://github.com/cjwn000/OP-HR/blob/main/PROJECT_STRUCTURE.md">PROJECT_STRUCTURE.md 바로가기</a>
