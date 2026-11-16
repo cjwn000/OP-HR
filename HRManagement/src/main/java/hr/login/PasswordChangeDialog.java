@@ -2,6 +2,7 @@
 package hr.login;
 
 import hr.common.HashUtil;
+import hr.common.NoSpaceFilter;
 import hr.common.Session;
 import hr.dao.AccountDAO;
 
@@ -194,6 +195,11 @@ public class PasswordChangeDialog extends JDialog {
      * 버튼과 입력 이벤트 연결.
      */
     private void bindEvents() {
+
+        // 비밀번호 입력칸 3개에 공백(스페이스) 입력 차단
+        NoSpaceFilter.apply(txtCurrent);
+        NoSpaceFilter.apply(txtNew);
+        NoSpaceFilter.apply(txtConfirm);
 
         // DocumentListener:
         // 입력칸의 내용이 변경될 때마다 검사
