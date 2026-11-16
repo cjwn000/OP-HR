@@ -3,6 +3,7 @@ package hr.login;
 
 import hr.admin.AdminMainFrame;
 import hr.common.HashUtil;
+import hr.common.NoSpaceFilter;
 import hr.common.Session;
 import hr.dao.AccountDAO;
 import hr.user.UserMainFrame;
@@ -185,6 +186,9 @@ public class LoginFrame extends JFrame {
 
         // 기본적으로 비밀번호 가리기
         txtPassword.setEchoChar(MASK_CHAR);
+
+        // 비밀번호에 공백(스페이스) 입력 차단
+        NoSpaceFilter.apply(txtPassword);
 
         // 체크박스 배치
         JPanel chkPanel =
@@ -372,6 +376,7 @@ public class LoginFrame extends JFrame {
                                 if (!info.account().isActive()) {
 
                                     showError("비활성화된 계정입니다.");
+                                    clearInputsAfterFail();
                                     return;
                                 }
 
@@ -380,6 +385,7 @@ public class LoginFrame extends JFrame {
                                         info.employee().getStatus())) {
 
                                     showError("퇴사 처리된 계정입니다.");
+                                    clearInputsAfterFail();
                                     return;
                                 }
 
@@ -390,6 +396,7 @@ public class LoginFrame extends JFrame {
                                         && !"USER".equals(role)) {
 
                                     showError("알 수 없는 계정 권한입니다.");
+                                    clearInputsAfterFail();
                                     return;
                                 }
 
@@ -480,8 +487,8 @@ public class LoginFrame extends JFrame {
         // 실패 횟수 증가
         failCount++;
 
-        // 입력한 비밀번호 삭제
-        txtPassword.setText("");
+        // 입력칸 초기화 (아이디 저장 여부에 따라)
+        clearInputsAfterFail();
 
         // 오류 메시지
         showError("아이디 또는 비밀번호가 올바르지 않습니다.");
@@ -489,6 +496,29 @@ public class LoginFrame extends JFrame {
         // 3회 실패하면 버튼 잠금
         if (failCount >= MAX_FAIL) {
             lockLoginButton();
+        }
+    }
+
+    /**
+     * 로그인 실패 후 입력칸을 정리한다.
+     *
+     * 비밀번호는 항상 지운다.
+     * 아이디 저장을 체크하지 않았으면 아이디도 지우고
+     * 아이디 입력칸으로 커서를 옮긴다.
+     * 체크했으면 아이디는 남기고 비밀번호 칸으로 커서를 옮긴다.
+     */
+    private void clearInputsAfterFail() {
+
+        txtPassword.setText("");
+
+        if (chkSaveId.isSelected()) {
+
+            txtPassword.requestFocusInWindow();
+
+        } else {
+
+            txtUsername.setText("");
+            txtUsername.requestFocusInWindow();
         }
     }
 
